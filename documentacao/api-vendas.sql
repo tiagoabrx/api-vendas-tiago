@@ -4,7 +4,7 @@ CREATE TABLE "produtos" (
   "peca" varchar(15) NOT NULL,
   "tamanho" varchar(3) NOT NULL,
   "categoria" char(1) NOT NULL,
-  "preco" numeric(8,2) NOT NULL,
+  "preco" integer NOT NULL,
   "qtdestoque" integer DEFAULT 0,
   "ativo" boolean DEFAULT true
 );
@@ -104,14 +104,18 @@ ALTER TABLE "produtos_aquisicoes" ADD FOREIGN KEY ("aquisicoes_id") REFERENCES "
 
 ALTER TABLE "produtos" ADD FOREIGN KEY ("preco") REFERENCES "precos" ("id");
 
+
 ALTER TABLE "vendas" ADD FOREIGN KEY ("cliente") REFERENCES "clientes" ("id");
 
 ALTER TABLE "vendas" ADD FOREIGN KEY ("lojista") REFERENCES "lojistas" ("id");
+
 
 ALTER TABLE "aquisicoes" ADD FOREIGN KEY ("fornecedor") REFERENCES "fornecedores" ("id");
 
 ALTER TABLE "aquisicoes" ADD FOREIGN KEY ("lojista") REFERENCES "lojistas" ("id");
 
+
 ALTER TABLE "lojistas" ADD FOREIGN KEY ("endereco") REFERENCES "enderecos" ("id");
+
 
 ALTER TABLE "clientes" ADD FOREIGN KEY ("endereco") REFERENCES "enderecos" ("id");
