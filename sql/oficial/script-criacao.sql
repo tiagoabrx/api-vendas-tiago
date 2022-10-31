@@ -25,7 +25,7 @@ CREATE TABLE "vendas" (
   "formapagamento" char(2) NOT NULL,
   "vendavarejo" boolean DEFAULT true,
   "desconto" numeric(3) DEFAULT 0,
-  "valorFrete" numeric(5, 2) DEFAULT 0,
+  "valorFrete" "numeric(5, 2)" DEFAULT 0,
   "valorTotal" numeric(12,2) NOT NULL,
   "enviada" boolean DEFAULT false,
   "ativo" boolean DEFAULT true
@@ -47,7 +47,7 @@ CREATE TABLE "aquisicoes" (
   "lojista" integer NOT NULL,
   "datahoraaquisicao" timestamptz DEFAULT 'now()',
   "formapagamento" char(2) NOT NULL,
-  "valorTotal" integer NOT NULL,
+  "valorTotal" numeric(12,2) NOT NULL,
   "ativo" boolean DEFAULT true
 );
 
