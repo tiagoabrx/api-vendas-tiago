@@ -1,3 +1,5 @@
+--CREATE DATABASE "api-vendas";
+
 CREATE TABLE "produtos" (
   "id" serial PRIMARY KEY,
   "descricao" varchar NOT NULL,
@@ -5,7 +7,7 @@ CREATE TABLE "produtos" (
   "tamanho" varchar(3) NOT NULL,
   "categoria" char(1) NOT NULL,
   "preco" integer NOT NULL,
-  "qtdestoque" integer DEFAULT 0,
+  "qtdEstoque" integer DEFAULT 0,
   "ativo" boolean DEFAULT true
 );
 
@@ -21,9 +23,9 @@ CREATE TABLE "vendas" (
   "id" serial PRIMARY KEY,
   "cliente" integer NOT NULL,
   "lojista" integer NOT NULL,
-  "datahoravenda" timestamptz DEFAULT 'now()',
-  "formapagamento" char(2) NOT NULL,
-  "vendavarejo" boolean DEFAULT true,
+  "dataHoraVenda" timestamptz DEFAULT 'now()',
+  "formaPagamento" char(2) NOT NULL,
+  "vendaVarejo" boolean DEFAULT true,
   "desconto" numeric(3) DEFAULT 0,
   "valorFrete" numeric(5, 2) DEFAULT 0,
   "valorTotal" numeric(12,2) NOT NULL,
@@ -45,8 +47,8 @@ CREATE TABLE "aquisicoes" (
   "id" serial PRIMARY KEY,
   "fornecedor" integer NOT NULL,
   "lojista" integer NOT NULL,
-  "datahoraaquisicao" timestamptz DEFAULT 'now()',
-  "formapagamento" char(2) NOT NULL,
+  "dataHoraAquisicao" timestamptz DEFAULT 'now()',
+  "formaPagamento" char(2) NOT NULL,
   "valorTotal" numeric(12,2) NOT NULL,
   "ativo" boolean DEFAULT true
 );
@@ -54,7 +56,7 @@ CREATE TABLE "aquisicoes" (
 CREATE TABLE "lojistas" (
   "id" serial PRIMARY KEY,
   "cnpj" char(14) UNIQUE NOT NULL,
-  "razaosocial" varchar(80) NOT NULL,
+  "razaoSocial" varchar(80) NOT NULL,
   "segmento" varchar(50),
   "telefone" bigint NOT NULL,
   "endereco" integer NOT NULL,
@@ -64,7 +66,7 @@ CREATE TABLE "lojistas" (
 CREATE TABLE "fornecedores" (
   "id" serial PRIMARY KEY,
   "cnpj" char(14) UNIQUE NOT NULL,
-  "razaosocial" varchar(80) NOT NULL,
+  "razaoSocial" varchar(80) NOT NULL,
   "telefone" bigint NOT NULL,
   "endereco" integer NOT NULL,
   "ativo" boolean DEFAULT true
@@ -104,18 +106,14 @@ ALTER TABLE "produtos_aquisicoes" ADD FOREIGN KEY ("aquisicoes_id") REFERENCES "
 
 ALTER TABLE "produtos" ADD FOREIGN KEY ("preco") REFERENCES "precos" ("id");
 
-
 ALTER TABLE "vendas" ADD FOREIGN KEY ("cliente") REFERENCES "clientes" ("id");
 
 ALTER TABLE "vendas" ADD FOREIGN KEY ("lojista") REFERENCES "lojistas" ("id");
-
 
 ALTER TABLE "aquisicoes" ADD FOREIGN KEY ("fornecedor") REFERENCES "fornecedores" ("id");
 
 ALTER TABLE "aquisicoes" ADD FOREIGN KEY ("lojista") REFERENCES "lojistas" ("id");
 
-
 ALTER TABLE "lojistas" ADD FOREIGN KEY ("endereco") REFERENCES "enderecos" ("id");
-
 
 ALTER TABLE "clientes" ADD FOREIGN KEY ("endereco") REFERENCES "enderecos" ("id");

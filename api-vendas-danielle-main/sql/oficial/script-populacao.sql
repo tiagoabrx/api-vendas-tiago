@@ -71,9 +71,9 @@ INSERT INTO clientes ("cpf_cnpj", "nome_razaosocial", "telefone", "endereco", "t
 --
 -- POPULAR TABELA LOJISTAS
 --
-INSERT INTO lojistas ("cnpj", "razaosocial", "segmento", "telefone", "endereco", "ativo") VALUES 
+INSERT INTO lojistas ("cnpj", "razaoSocial", "segmento", "telefone", "endereco", "ativo") VALUES 
 	-- 01
-	('77180477000120','Zé modas','Moda Masculina', 6235353614, 11, true),
+	('23197506000138','Zé modas','Moda Masculina', 6235353614, 11, true),
 	-- 02
 	('70824477000541','De millus','Moda Íntima', 6235353620, 12, false),
 	-- 03
@@ -87,18 +87,26 @@ INSERT INTO lojistas ("cnpj", "razaosocial", "segmento", "telefone", "endereco",
 	-- 07
 	('56793038000113', 'Pérolas Make', 'Cosméticos', 6240028922, 11, true),
 	-- 08
-	('81106457000187', 'Star Chick', 'Calçados', 6436765734, 12, true),
+	('81106457000187', 'Toda Jeans', 'Moda Feminina', 6436765734, 12, true),
 	-- 09
-	('11910252000174', 'Menina Bonita', 'Acessórios', 6431939226, 11, true),
+	('11910252000174', 'Meu Estilo', 'Moda Feminina', 6431939226, 11, true),
 	-- 10
 	('93074376000121', 'Xerife', 'Calçados', 40028922, 12, false),
 	-- 11
-	('15032544000102', 'Shopping dos Cosméticos', 'Cosméticos', 40028922, 11, true);
+	('08072594000158', 'Shopping dos Cosméticos', 'Cosméticos', 40028922, 11, true),
+	-- 12
+	('42579343000100', 'Flávio''s', 'Calçados', 6240028922, 11, true),
+	-- 13
+	('25580903000110', 'Innovar', 'Cosméticos', 6436765734, 12, true),
+	-- 14
+	('13108047000115', 'Menina Bonita', 'Acessórios', 6431939226, 11, true),
+	-- 15
+	('20069955000102', '4 Men', 'Moda Masculina', 40028922, 12, false);
 
 --
 -- POPULAR TABELA FORNECEDORES
 --
-INSERT INTO fornecedores ("cnpj", "razaosocial", "telefone", "endereco", "ativo") VALUES
+INSERT INTO fornecedores ("cnpj", "razaoSocial", "telefone", "endereco", "ativo") VALUES
 	-- 01
 	('70056402145784', 'Minha Marca', 6258946164, 13, false),
 	-- 02
@@ -110,74 +118,84 @@ INSERT INTO fornecedores ("cnpj", "razaosocial", "telefone", "endereco", "ativo"
 	-- 05
 	('81558192000158', 'Adides', 6209688352, 15, true),
 	-- 06
-	('97709486000173', 'Naiki', 62987678763, 14, true),
+	('36374445000189', 'Naiki', 62987678763, 14, true),
 	-- 07
-	('52596894000128', 'Pinscher-Bull', 62986185432, 15, true),
+	('13152458000108', 'Pinscher-Bull', 62986185432, 15, true),
 	-- 08
-	('65755183000109', 'Gutti', 6209688352, 15, true),
+	('63399939000190', 'Gutti', 6209688352, 15, true),
 	-- 09
-	('70119525000126', 'Prado', 62987678763, 14, true),
+	('76550207000100', 'Prado', 62987678763, 14, true),
 	-- 10
-	('70105795000188', 'A Boticária', 62986185432, 15, true),
+	('09713961000118', 'A Boticária', 62986185432, 15, true),
 	-- 11
-	('96865834000139', 'Luís Vitão', 62986185432, 15, true),
+	('88211368000140', 'Luís Vitão', 62986185432, 15, true),
 	-- 12
-	('98597147000105', 'Zangão Rei', 6209688352, 15, true),
+	('21153776000111', 'Zangão Rei', 6209688352, 15, true),
 	-- 13
-	('36374445000189', 'Tomme', 62987678763, 14, true),
+	('57701772000178', 'Tomme', 62987678763, 14, true),
 	-- 14
-	('13152458000108', 'Lacrastes', 62986185432, 15, true),
+	('88027642000125', 'Lacrastes', 62986185432, 15, true),
 	-- 15
-	('08567095000131', 'Ralf e Lara', 62986185432, 15, true);
+	('97193964000135', 'Ralf e Lara', 62986185432, 15, true);
 
 --
 -- POPULAR TABELA AQUISIÇÕES
 --
-INSERT INTO aquisicoes("fornecedor", "lojista", "datahoraaquisicao", "formapagamento", "valorTotal", "ativo") VALUES
+INSERT INTO aquisicoes("fornecedor", "lojista", "dataHoraAquisicao", "formaPagamento", "valorTotal", "ativo") VALUES
 	-- 01
-	(1, 1, '2022-10-25 14:34:09', 'D', '23.50', 'true'),
+	(1, 1, '2022-10-25 14:34:09', 'PX', 23.50, 'true'),
 	-- 02
-	(2, 2, '2022-10-24 12:34:49', 'D', '23.50', 'true'),
+	(2, 2, '2022-10-24 12:34:49', 'PX', 23.50, 'true'),
 	-- 03
-	(3, 3, '2022-10-23 11:34:00', 'D', '23.50', 'true'),
+	(3, 3, '2022-10-23 11:34:00', 'PX', 23.50, 'true'),
 	-- 04
-	(4, 4, '2022-10-23 10:34:59', 'D', '23.50', 'true'),
+	(4, 4, '2022-10-23 10:34:59', 'PX', 23.50, 'true'),
 	-- 05
-	(5, 5, '2022-10-22 09:14:52', 'D', '23.50', 'true'),
+	(5, 5, '2022-10-22 09:14:52', 'PX', 23.50, 'true'),
 	-- 06
-	(6, 6, '2022-10-23 17:04:33', 'D', '23.50', 'true'),
+	(6, 6, '2022-10-23 17:04:33', 'D', 23.50, 'true'),
 	-- 07
-	(7, 7, '2022-10-19 08:23:01', 'D', '23.50', 'true'),
+	(7, 7, '2022-10-19 08:23:01', 'D', 23.50, 'true'),
 	-- 08
-	(8, 8, '2022-10-11 08:23:01', 'D', '23.50', 'true'),
+	(8, 8, '2022-10-11 08:23:01', 'D', 23.50, 'true'),
 	-- 09
-	(9, 9, '2022-11-11 08:23:01', 'D', '23.50', 'true'),
+	(9, 9, '2022-11-11 08:23:01', 'D', 23.50, 'true'),
 	-- 10
-	(10, 10, '2022-11-14 08:23:01', 'D', '23.50', 'true'),
+	(10, 10, '2022-11-14 08:23:01', 'D', 23.50, 'true'),
 	-- 11
-	(11, 11, '2022-11-18 08:23:01', 'D', '23.50', 'true'),
+	(11, 11, '2022-11-18 08:23:01', 'CC', 23.50, 'true'),
 	-- 12
-	(12, 12, '2021-11-17 08:23:01', 'D', '23.50', 'true'),
+	(12, 12, '2021-11-17 08:23:01', 'CC', 23.50, 'true'),
 	-- 13
-	(13, 13, '2022-12-19 08:23:01', 'D', '23.50', 'true'),
+	(13, 13, '2022-12-19 08:23:01', 'CC', 23.50, 'true'),
 	-- 14
-	(14, 14, '2022-12-15 08:23:01', 'D', '23.50', 'true'),
+	(14, 14, '2022-12-15 08:23:01', 'CC', 23.50, 'true'),
 	-- 15
-	(15, 15, '2022-12-28 08:23:01', 'D', '23.50', 'true');
+	(15, 15, '2022-12-28 08:23:01', 'CC', 23.50, 'true');
 
 --
 -- POPULAR TABELA VENDAS
 --
-INSERT INTO vendas ("cliente", "lojista", "datahoravenda", "formapagamento", "vendavarejo", "desconto", "valorFrete", "valorTotal") VALUES
+INSERT INTO vendas ("cliente", "lojista", "dataHoraVenda", "formaPagamento", "vendaVarejo", "desconto", "valorFrete", "valorTotal") VALUES
+	-- 01
 	(1,		1,	'2022-08-18 01:37:03-03',	'cd',	true,	0.0,	20.00,		97.00),
+	-- 02
 	(2,		1,	'2022-08-19 16:37:08-03',	'cc',	true,	0.0,	20.00,		97.00),
+	-- 03
 	(3,		2,	'2022-08-20 17:37:10-03',	'cd',	true,	0.0,	20.00,		97.00),
+	-- 04
 	(4,		2,	'2022-08-21 18:37:20-03',	'cc',	true,	0.0,	20.00,		97.00),
+	-- 05
 	(5,		3,	'2022-08-22 19:37:00-03',	'cd',	false,	0.0,	20.00,		97.00),
+	-- 06
 	(6,		3,	'2022-08-23 20:37:00-03',	'cc',	true,	0.0,	20.00,		97.00),
+	-- 07
 	(7,		3,	'2022-09-05 21:37:00-03',	'cd',	false,	0.0,	20.00,		97.00),
+	-- 08
 	(8,		4,	'2022-09-06 22:37:00-03',	'cc',	true,	0.0,	20.00,		97.00),
+	-- 09
 	(9,		4,	'2022-09-08 23:37:00-03',	'cd',	true,	0.0,	20.00,		97.00),
+	-- 10
 	(10,	4,	'2022-09-09 11:37:00-03',	'cc',	false,	0.0,	20.00,		97.00),
 	(11,	5,	'2022-09-10 02:37:00-03',	'cd',	false,	0.0,	20.00,		97.00),
 	(12,	5,	'2022-09-11 03:37:00-03',	'cc',	false,	0.0,	20.00,		97.00),
@@ -209,3 +227,76 @@ INSERT INTO vendas ("cliente", "lojista", "datahoravenda", "formapagamento", "ve
 	(8,		15,	'2022-07-27 22:37:00-03',	'dn',	true,	0.0,	20.00,		97.00),
 	(9,		15,	'2022-07-31 23:37:00-03',	'dn',	true,	0.0,	20.00,		97.00),
 	(10,	15,	'2022-07-31 11:37:00-03',	'dn',	false,	0.0,	20.00,		97.00);
+
+--
+-- POPULAR TABELA PREÇOS
+--
+INSERT INTO precos ("valor", "dataInicioVigencia", "dataFimVigencia") VALUES
+	-- 01
+	('2996','2022-09-11','2023-12-11'),
+	-- 02
+	('3996','2022-12-12','2023-01-01'),
+	-- 03
+	('3496','2023-01-02','2023-05-02'),
+	-- 04
+	('99','2022-09-11','2023-12-11'),
+	-- 05
+	('69','2022-12-12','2023-01-01'),
+	-- 06
+	('29','2023-01-02','2023-05-02'),
+	-- 07
+	('336','2022-11-01','2022-11-30'),
+	-- 08
+	('396','2022-12-01','2023-12-01'),
+	-- 09
+	('4299','2022-08-01','2022-12-23'),
+	-- 10
+	('4599','2022-12-24','2022-12-31'),
+	-- 11
+	('100','2022-08-01','2022-12-23'),
+	-- 12
+	('200','2022-12-24','2022-12-31'),
+	-- 13
+	('300','2022-08-01','2022-12-23'),
+	-- 14
+	('22.99','2022-08-01','2022-12-23'),
+	-- 15
+	('27.99','2022-12-24','2022-12-31');
+
+--
+-- POPULAR TABELA PRODUTOS
+--
+ALTER TABLE produtos
+DROP COLUMN "peca";
+
+INSERT INTO produtos ("descricao", "tamanho", "categoria", "qtdEstoque", "ativo", "preco") VALUES
+-- 01
+('Regata esportiva azul', 'M', 'F', 50, true, 15),
+-- 02
+('Moleton inverno branco', 'P', 'F', 50, true, 13),
+-- 03
+('Pijama fullbody unicórnio azul', 'G', 'F', 50, true, 11),
+-- 04
+('Vestido longo estampado', 'GG', 'F', 50, true, 11),
+-- 05
+('Calça legging preta', 'EXG', 'F', 50, true, 5),
+-- 06
+('Camiseta time brasil', 'P', 'M', 50, true, 8),
+-- 07
+('Blusa de frio moletinho estampa Akatsuki', 'M', 'M', 50, true, 12),
+-- 08
+('Calça jeans jogger lavagem escura', 'G', 'M', 50, true, 8),
+-- 09
+('Calça jeans wide leg lavagem clara', 'G', 'F', 50, true, 8),
+-- 10
+('Terno masculino risca de giz', 'EXG', 'M', 50, true, 1),
+-- 11
+('Pijama Homem-Aranha vermelho e azul', 'P', 'I', 50, true, 15),
+-- 12
+('Bermuda sarja preta estampada Batman', 'M', 'I', 50, true, 5),
+-- 13
+('Regata vermelha estampada Hotwheels', 'G', 'I', 50, true, 15),
+-- 14
+('Conjunto moletom blusa e calça Vingadores', 'GG', 'I', 50, true, 12),
+-- 15
+('Sunga de banho azul', 'EXG', 'M', 50, true, 14);
