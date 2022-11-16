@@ -3,11 +3,9 @@
 Table produtos {
   id serial [pk]
   descricao varchar [not null]
-  peca varchar(15) [not null]
   tamanho varchar(3) [not null]
   categoria char(1) [not null] // I - infanto-juvenil M - masc 3 - fem
-  preco numeric(8,2) [not null] // maior que 0
-  qtdestoque integer [default: 0]
+  qtdEstoque integer [default: 0] // maior que 0
   ativo boolean [default: true]
 }
 
@@ -17,15 +15,16 @@ Table precos {
   dataInicioVigencia date [not null]
   dataFimVigencia date [not null]
   descricao varchar(50)
+  ativo boolean [default: true]
 }
 
 Table vendas {
   id serial [pk]
-  cliente integer [not null]
-  lojista integer [not null]
-  datahoravenda timestamptz [default: 'now()']
-  formapagamento char(2) [not null] // DN PX CD CC BL
-  vendavarejo boolean [default: true]
+  fkCliente integer [not null]
+  fkLojista integer [not null]
+  dataHoraVenda timestamptz [default: 'now()']
+  formaPagamento char(2) [not null] // DN PX CD CC BL
+  vendaVarejo boolean [default: true]
   desconto numeric(3) [default: 0] // 0% a 100%
   valorFrete numeric(5, 2) [default: 0.0]
   valorTotal numeric(12,2) [not null]
@@ -35,40 +34,40 @@ Table vendas {
 
 Table clientes {
   id serial [pk]
-  cpf_cnpj varchar(14) [not null, unique] // check > 10 e < 15
+  fkEndereco integer [not null]
+  cpf_cnpj varchar(14) [not null, unique]
   nome_razaosocial varchar(80) [not null]
   telefone bigint [not null]
-  endereco integer [not null]
   tipoPessoa char(2) // PF - Pessoa Física PJ - Pessoa Jurídica
   ativo boolean [default: true]
 }
 
 Table aquisicoes {
   id serial [pk]
-  fornecedor integer [not null]
-  lojista integer [not null]
-  datahoraaquisicao timestamptz [default: 'now()']
-  formapagamento char(2) [not null] // DN PX CD CC BL
+  fkFornecedor integer [not null]
+  fkLojista integer [not null]
+  dataHoraAquisicao timestamptz [default: 'now()']
+  formaPagamento char(2) [not null] // DN PX CD CC BL
   valorTotal numeric(12,2) [not null]
   ativo boolean [default: true]
 }
 
 Table lojistas {
   id serial [pk]
+  fkEndereco integer [not null]
   cnpj char(14) [not null, unique]
-  razaosocial varchar(80) [not null]
+  razaoSocial varchar(80) [not null]
   segmento varchar(50)
   telefone bigint [not null]
-  endereco integer [not null]
   ativo boolean [default: true]
 }
 
 Table fornecedores {
   id serial [pk]
+  fkEndereco integer [not null]
   cnpj char(14) [not null, unique]
-  razaosocial varchar(80) [not null]
+  razaoSocial varchar(80) [not null]
   telefone bigint [not null]
-  endereco integer [not null]
   ativo boolean [default: true]
 }
 
@@ -88,16 +87,18 @@ Ref: produtos.id <> vendas.id
 
 Ref: produtos.id <> aquisicoes.id
 
-Ref: produtos.preco > precos.id
+Ref: produtos.id <> precos.id
 
-Ref: vendas.cliente > clientes.id
+Ref: vendas.fkCliente > clientes.id
 
-Ref: vendas.lojista > lojistas.id
+Ref: vendas.fkLojista > lojistas.id
 
-Ref: aquisicoes.fornecedor > fornecedores.id
+Ref: aquisicoes.fkFornecedor > fornecedores.id
 
-Ref: aquisicoes.lojista > lojistas.id
+Ref: aquisicoes.fkLojista > lojistas.id
 
-Ref: lojistas.endereco > enderecos.id
+Ref: fornecedores.fkEndereco > enderecos.id
 
-Ref: clientes.endereco > enderecos.id
+Ref: lojistas.fkEndereco > enderecos.id
+
+Ref: clientes.fkEndereco > enderecos.id
